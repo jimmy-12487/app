@@ -42,8 +42,14 @@ class MainActivity : ComponentActivity() {
                     composable("mainPage") {
                         MainPage(navController)
                     }
-                    composable("secondPage") {
+                    composable("uploadPage") {
                         UploadPage(navController)
+                    }
+                    composable("novel1Episodes") {
+                        MakeNovel1Episodes(navController)
+                    }
+                    composable("novel1Episode1") {
+                        Novel1Episode1(navController)
                     }
                 }
             }
@@ -52,13 +58,12 @@ class MainActivity : ComponentActivity() {
 }
 
 
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     val navController = rememberNavController()
     APPTheme {
-        NavHost(navController, startDestination = "mainPage") {
+        NavHost(navController, startDestination = "novel1Episode1") {
             composable("mainPage") {
                 MainPage(navController)
             }

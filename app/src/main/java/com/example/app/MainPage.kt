@@ -46,7 +46,7 @@ fun MainPage(navController: NavHostController) {
             MakeSecondRow(categoryWidth, categoryHeight, navController)
             MakeUploadRow(categoryWidth, categoryHeight, navController)
             MakePopNovelRow(categoryWidth, categoryHeight, navController)
-
+            MakeBottomRow(categoryWidth, categoryHeight, navController)
 
         }
     }
@@ -98,7 +98,6 @@ fun MakeFirstRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostCo
         }
     }
 }
-
 @Composable
 fun MakeSecondRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostController) {
     Row(
@@ -146,7 +145,6 @@ fun MakeSecondRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostC
         }
     }
 }
-
 @Composable
 fun MakeUploadRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostController) {
     Row(
@@ -191,6 +189,92 @@ fun MakePopNovelRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHos
                 painter = painterResource(id = R.drawable.novel_2),
                 contentDescription = "first novel"
             )
+        }
+    }
+}
+@Composable
+fun MakeBottomRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostController) {
+    Row(
+        modifier = Modifier
+            .offset(x = 0.dp, y = 80.dp)
+            .alpha(0f),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Start
+    ) {
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .offset(x = 5.dp, y = 0.dp)
+                .padding(horizontal = 8.dp)
+                .size(width = categoryWidth, height = categoryHeight)
+        ) {
+        }
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .offset(x = 5.dp, y = 0.dp)
+                .padding(horizontal = 8.dp)
+                .size(width = categoryWidth, height = categoryHeight)
+        ) {
+        }
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .offset(x = 5.dp, y = 0.dp)
+                .padding(horizontal = 8.dp)
+                .size(width = categoryWidth, height = categoryHeight)
+        ) {
+        }
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .offset(x = 0.dp, y = 0.dp)
+                .padding(horizontal = 8.dp)
+                .size(width = categoryWidth, height = categoryHeight)
+        ) {
+        }
+    }
+}
+@Composable
+fun MakeBottom(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostController) {
+    Row(
+        modifier = Modifier
+            .offset(x = 0.dp, y = 791.dp)
+            .alpha(0f),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Start
+    ) {
+        Button(
+            onClick = {navController.navigate("mainPage")},
+            modifier = Modifier
+                .offset(x = 5.dp, y = 0.dp)
+                .padding(horizontal = 8.dp)
+                .size(width = categoryWidth, height = categoryHeight)
+        ) {
+        }
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .offset(x = 5.dp, y = 0.dp)
+                .padding(horizontal = 8.dp)
+                .size(width = categoryWidth, height = categoryHeight)
+        ) {
+        }
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .offset(x = 5.dp, y = 0.dp)
+                .padding(horizontal = 8.dp)
+                .size(width = categoryWidth, height = categoryHeight)
+        ) {
+        }
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .offset(x = 0.dp, y = 0.dp)
+                .padding(horizontal = 8.dp)
+                .size(width = categoryWidth, height = categoryHeight)
+        ) {
         }
     }
 }

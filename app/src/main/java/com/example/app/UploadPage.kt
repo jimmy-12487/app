@@ -15,18 +15,14 @@ import androidx.navigation.NavHostController
 @Composable
 fun UploadPage(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
+        val categoryWidth = 80.dp
+        val categoryHeight = 40.dp
         Image(
             painter = painterResource(id = R.drawable.upload_page),
             contentDescription = "This is upload page",
             contentScale = ContentScale.FillBounds,
             modifier = Modifier.matchParentSize()
         )
-        Column (
-            modifier = Modifier
-                .offset(x = 0.dp, y = 340.dp)
-        )
-        {
-
-        }
+        MakeBottom(categoryWidth, categoryHeight, navController)
     }
 }
