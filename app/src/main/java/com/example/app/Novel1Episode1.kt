@@ -27,17 +27,7 @@ import androidx.navigation.compose.composable
 fun Novel1Episode1(navController: NavHostController) {
     val categoryWidth = 80.dp
     val categoryHeight = 40.dp
-    var isPlaying  = false
-    var player: MediaPlayer? = null
-    if (player == null){
-        player = MediaPlayer.create(this, R.raw.song)
-    }
-    player!!.start()
-    isPlaying = true
-    with(binding) {
-        fabPlayOrPause.setImageResource(R.drawable.ic_pause)
-        fabStop.visibility = View.VISIBLE
-    }
+
     Box(
         modifier = Modifier
     ) {

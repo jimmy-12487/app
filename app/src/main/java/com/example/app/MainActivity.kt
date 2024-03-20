@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
 fun GreetingPreview() {
     val navController = rememberNavController()
     APPTheme {
-        NavHost(navController, startDestination = "novel1Episode1") {
+        NavHost(navController, startDestination = "uploadPage") {
             composable("mainPage") {
                 MainPage(navController)
             }
