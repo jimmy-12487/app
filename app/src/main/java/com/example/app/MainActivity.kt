@@ -1,5 +1,6 @@
 package com.example.app
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -33,17 +34,26 @@ import androidx.navigation.compose.rememberNavController
 import com.example.app.ui.theme.APPTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val adsPlayer = MediaPlayer.create(this, R.raw.ads)
+            val player = MediaPlayer.create(this, R.raw.novel)
             val navController = rememberNavController()
             APPTheme {
                 NavHost(navController, startDestination = "mainPage") {
                     composable("mainPage") {
                         MainPage(navController)
                     }
-                    composable("secondPage") {
+                    composable("uploadPage") {
                         UploadPage(navController)
+                    }
+                    composable("novel1Episodes") {
+                        MakeNovel1Episodes(navController)
+                    }
+                    composable("novel1Episode1") {
+                        Novel1Episode1(player, adsPlayer, navController)
                     }
                 }
             }
@@ -52,13 +62,14 @@ class MainActivity : ComponentActivity() {
 }
 
 
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     val navController = rememberNavController()
+    val mediaPlayer: MediaPlayer? = null
+
     APPTheme {
-        NavHost(navController, startDestination = "mainPage") {
+        NavHost(navController, startDestination = "uploadPage") {
             composable("mainPage") {
                 MainPage(navController)
             }
@@ -69,8 +80,9 @@ fun GreetingPreview() {
                 MakeNovel1Episodes(navController)
             }
             composable("novel1Episode1") {
-                Novel1Episode1(navController)
+                Novel1Episode1(mediaPlayer, mediaPlayer, navController)
             }
+
         }
     }
 }

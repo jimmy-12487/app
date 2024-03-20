@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -22,6 +24,8 @@ fun MakeNovel1Episodes(navController: NavHostController) {
     Box(
         modifier = Modifier
     ) {
+        val categoryWidth = 80.dp
+        val categoryHeight = 40.dp
         Image(
             painter = painterResource(id = R.drawable.novel_1_episodes),
             contentDescription = "This is upload page",
@@ -36,9 +40,26 @@ fun MakeNovel1Episodes(navController: NavHostController) {
                     .offset(x = 0.dp, y = 385.dp),
                 shape = RectangleShape,
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
-            ){
-            }
+            ){}
         }
+        MakeEpisodesButtons(navController)
+        MakeBottom(categoryWidth, categoryHeight, navController)
 
+    }
+}
+@Composable
+fun MakeEpisodesButtons(navController: NavHostController){
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Button(
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .size(80.dp, 80.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+            onClick = { navController.navigate("mainPage") }
+        ) {
+
+        }
     }
 }
