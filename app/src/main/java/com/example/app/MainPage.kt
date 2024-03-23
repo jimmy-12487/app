@@ -57,8 +57,8 @@ fun MainPage(navController: NavHostController) {
             MakeUploadRow(categoryWidth, categoryHeight, setUpload, navController)
             MakePopNovelRow(categoryWidth, categoryHeight, upload, navController)
             MakeBottomRow(categoryWidth, categoryHeight, navController)
-
         }
+        MakeUploadButton(navController)
     }
 }
 
@@ -161,16 +161,20 @@ fun MakeUploadRow(categoryWidth: Dp, categoryHeight: Dp, setUpload: (Int)->Unit,
         modifier = Modifier.offset(x = 0.dp, y = 0.dp)
     ) {
         Button(
+<<<<<<< HEAD
             onClick = {
                 navController.navigate("uploadPage")
                 setUpload(1)
             },
+=======
+            onClick = {},
+>>>>>>> fc30a5256512ea114d05ab5668bdc4ac641cdd0a
             modifier = Modifier
                 .size(width = 100.dp, height = 100.dp)
-                .offset(x = 70.dp, y = 15.dp),
+                .offset(x = 80.dp, y = 15.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
         ) {
-            Image(painter = painterResource(id = R.drawable.upload_icon), contentDescription = null)
+            //Image(painter = painterResource(id = R.drawable.upload_icon), contentDescription = null)
         }
     }
 }
@@ -240,7 +244,7 @@ fun MakeBottomRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostC
         ) {
         }
         Button(
-            onClick = {},
+            onClick = {navController.navigate("uploadPage")},
             modifier = Modifier
                 .offset(x = 0.dp, y = 0.dp)
                 .padding(horizontal = 8.dp)
@@ -283,12 +287,29 @@ fun MakeBottom(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostCont
         ) {
         }
         Button(
-            onClick = {},
+            onClick = { navController.navigate("uploadPage")},
             modifier = Modifier
                 .offset(x = 0.dp, y = 0.dp)
                 .padding(horizontal = 8.dp)
                 .size(width = categoryWidth, height = categoryHeight)
         ) {
+        }
+    }
+}
+@Composable
+fun MakeUploadButton(navController: NavHostController){
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Button(
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .size(60.dp, 60.dp)
+                .offset((-3).dp, 15.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+            onClick = { navController.navigate("uploadPage") }
+        ) {
+
         }
     }
 }

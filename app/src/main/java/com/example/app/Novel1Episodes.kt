@@ -55,7 +55,8 @@ fun MakeEpisodesButtons(navController: NavHostController){
         Button(
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .size(80.dp, 80.dp),
+                .size(60.dp, 60.dp)
+                .offset((-14).dp, 12.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
             onClick = { navController.navigate("mainPage") }
         ) {

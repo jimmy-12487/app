@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
                         MainPage(navController)
                     }
                     composable("uploadPage") {
-                        UploadPage(navController)
+                        UploadPage(player, navController)
                     }
                     composable("novel1Episodes") {
                         MakeNovel1Episodes(navController)
@@ -72,12 +72,12 @@ fun GreetingPreview() {
     val mediaPlayer: MediaPlayer? = null
 
     APPTheme {
-        NavHost(navController, startDestination = "uploadPage") {
+        NavHost(navController, startDestination = "mainPage") {
             composable("mainPage") {
                 MainPage(navController)
             }
             composable("uploadPage") {
-                UploadPage(navController)
+                UploadPage(mediaPlayer, navController)
             }
             composable("novel1Episodes") {
                 MakeNovel1Episodes(navController)
