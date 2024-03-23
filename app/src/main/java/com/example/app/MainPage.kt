@@ -14,6 +14,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -25,11 +27,19 @@ import androidx.navigation.NavHostController
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 
+enum class UploadState(val value: Int) {
+    NotUpload(0),
+    Uploaded(1)
+}
 
 @Composable
 fun MainPage(navController: NavHostController) {
     val categoryWidth = 80.dp
     val categoryHeight = 40.dp
+
+    val (upload, setUpload) = remember { mutableIntStateOf(UploadState.NotUpload.value)}
+
+
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.homepage),
@@ -44,8 +54,8 @@ fun MainPage(navController: NavHostController) {
         {
             MakeFirstRow(categoryWidth, categoryHeight, navController)
             MakeSecondRow(categoryWidth, categoryHeight, navController)
-            MakeUploadRow(categoryWidth, categoryHeight, navController)
-            MakePopNovelRow(categoryWidth, categoryHeight, navController)
+            MakeUploadRow(categoryWidth, categoryHeight, setUpload, navController)
+            MakePopNovelRow(categoryWidth, categoryHeight, upload, navController)
             MakeBottomRow(categoryWidth, categoryHeight, navController)
 
         }
@@ -146,12 +156,15 @@ fun MakeSecondRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostC
     }
 }
 @Composable
-fun MakeUploadRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostController) {
+fun MakeUploadRow(categoryWidth: Dp, categoryHeight: Dp, setUpload: (Int)->Unit, navController: NavHostController) {
     Row(
         modifier = Modifier.offset(x = 0.dp, y = 0.dp)
     ) {
         Button(
-            onClick = { navController.navigate("uploadPage") },
+            onClick = {
+                navController.navigate("uploadPage")
+                setUpload(1)
+            },
             modifier = Modifier
                 .size(width = 100.dp, height = 100.dp)
                 .offset(x = 70.dp, y = 15.dp),
@@ -163,7 +176,7 @@ fun MakeUploadRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostC
 }
 
 @Composable
-fun MakePopNovelRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHostController) {
+fun MakePopNovelRow(categoryWidth: Dp, categoryHeight: Dp, upload: Int, navController: NavHostController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -180,7 +193,8 @@ fun MakePopNovelRow(categoryWidth: Dp, categoryHeight: Dp, navController: NavHos
                 contentDescription = "first novel"
             )
         }
-        Button( onClick = { /*TODO*/ },
+        Button(
+            onClick = { /*TODO*/ },
             modifier = Modifier,
             shape = RectangleShape,
             colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
