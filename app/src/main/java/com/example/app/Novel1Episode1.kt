@@ -68,7 +68,7 @@ fun Novel1Episode1(player: MediaPlayer?, adsPlayer: MediaPlayer?, navController:
             modifier = Modifier
         ) {
             Image(
-                painter = painterResource(id = R.drawable.subtitle_page),
+                painter = painterResource(id = R.drawable.subtitle),
                 contentDescription = null,
                 modifier = Modifier
                     
@@ -113,7 +113,7 @@ fun MakeE1PlayButton(player:MediaPlayer?, adsPlayer:MediaPlayer?, navController:
                     }
                     State.ContentPlaying.value -> {
                         adsPlayer!!.seekTo(0)
-                        //adsPlayer!!.reset()
+                        adsPlayer!!.reset()
                         setImageResource(R.drawable.pause_button)
                         player!!.start()
                         setIsPlaying(State.ContentPause.value)

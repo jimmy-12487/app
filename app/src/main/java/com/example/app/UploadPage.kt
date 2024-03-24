@@ -39,7 +39,6 @@ fun UploadPage(player: MediaPlayer?, navController: NavHostController) {
 }
 @Composable
 fun MakeUpPlayButton(player: MediaPlayer?) {
-
     val (isPlaying, setIsPlaying) =
         remember {
             mutableIntStateOf(State.Initializing.value)
@@ -67,7 +66,6 @@ fun MakeUpPlayButton(player: MediaPlayer?) {
                         setIsPlaying(State.ContentPause.value)
 
                     }
-
                     State.ContentPause.value -> {
                         player!!.pause()
                         setImageResource(R.drawable.play_button)

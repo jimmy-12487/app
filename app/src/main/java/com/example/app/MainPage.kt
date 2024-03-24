@@ -161,14 +161,10 @@ fun MakeUploadRow(categoryWidth: Dp, categoryHeight: Dp, setUpload: (Int)->Unit,
         modifier = Modifier.offset(x = 0.dp, y = 0.dp)
     ) {
         Button(
-<<<<<<< HEAD
             onClick = {
                 navController.navigate("uploadPage")
                 setUpload(1)
             },
-=======
-            onClick = {},
->>>>>>> fc30a5256512ea114d05ab5668bdc4ac641cdd0a
             modifier = Modifier
                 .size(width = 100.dp, height = 100.dp)
                 .offset(x = 80.dp, y = 15.dp),
