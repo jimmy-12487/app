@@ -18,6 +18,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -44,7 +45,8 @@ enum class State(val value: Int) {
 fun Novel1Episode1(player: MediaPlayer?, adsPlayer: MediaPlayer?, navController: NavHostController) {
     val categoryWidth = 80.dp
     val categoryHeight = 40.dp
-
+    val (alphaRate, setAlphaRate) =
+        remember { mutableFloatStateOf(1.0f) }
     Box(
         modifier = Modifier
     ) {
@@ -52,8 +54,26 @@ fun Novel1Episode1(player: MediaPlayer?, adsPlayer: MediaPlayer?, navController:
             painter = painterResource(id = R.drawable.novel_1_e1),
             contentDescription = "This is upload page",
             contentScale = ContentScale.FillBounds,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
         )
+        Button(
+            onClick = {
+                if(alphaRate == 0.0f){
+                    setAlphaRate(1.0f)
+                } else {
+                    setAlphaRate(0.0f)
+                }
+            },
+            modifier = Modifier
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.subtitle_page),
+                contentDescription = null,
+                modifier = Modifier
+                    
+            )
+        }
     }
     MakeE1PlayButton(player, adsPlayer, navController)
 }
@@ -114,7 +134,7 @@ fun MakeE1PlayButton(player:MediaPlayer?, adsPlayer:MediaPlayer?, navController:
         }
         Button(
             modifier = Modifier
-                .offset(x=50.dp, y=20.dp)
+                .offset(x = 50.dp, y = 20.dp)
                 .size(50.dp, 50.dp)
                 .alpha(0.3f),
             colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
