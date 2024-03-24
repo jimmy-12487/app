@@ -93,7 +93,7 @@ fun MakeE1PlayButton(player:MediaPlayer?, adsPlayer:MediaPlayer?, navController:
                     }
                     State.ContentPlaying.value -> {
                         adsPlayer!!.seekTo(0)
-                        //adsPlayer!!.reset()
+                        adsPlayer!!.reset()
                         setImageResource(R.drawable.pause_button)
                         player!!.start()
                         setIsPlaying(State.ContentPause.value)
