@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.res.painterResource
@@ -46,7 +47,7 @@ fun Novel1Episode1(player: MediaPlayer?, adsPlayer: MediaPlayer?, navController:
     val categoryWidth = 80.dp
     val categoryHeight = 40.dp
     val (alphaRate, setAlphaRate) =
-        remember { mutableFloatStateOf(1.0f) }
+        remember { mutableFloatStateOf(0.0f) }
     Box(
         modifier = Modifier
     ) {
@@ -57,22 +58,29 @@ fun Novel1Episode1(player: MediaPlayer?, adsPlayer: MediaPlayer?, navController:
             modifier = Modifier
                 .fillMaxSize()
         )
-        Button(
-            onClick = {
-                if(alphaRate == 0.0f){
-                    setAlphaRate(1.0f)
-                } else {
-                    setAlphaRate(0.0f)
-                }
-            },
+        Box(
             modifier = Modifier
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.subtitle),
-                contentDescription = null,
+            Button(
+                onClick = {
+                    if(alphaRate == 0.0f){
+                        setAlphaRate(1.0f)
+                    } else {
+                        setAlphaRate(0.0f)
+                    }
+                },
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                shape = RectangleShape,
                 modifier = Modifier
-                    
-            )
+                    .offset(0.dp, y=120.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.subtitle),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .alpha(alphaRate)
+                )
+            }
         }
     }
     MakeE1PlayButton(player, adsPlayer, navController)

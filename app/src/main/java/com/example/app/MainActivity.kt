@@ -72,7 +72,7 @@ fun GreetingPreview() {
     val mediaPlayer: MediaPlayer? = null
 
     APPTheme {
-        NavHost(navController, startDestination = "mainPage") {
+        NavHost(navController, startDestination = "novel1Episode1") {
             composable("mainPage") {
                 MainPage(navController)
             }
