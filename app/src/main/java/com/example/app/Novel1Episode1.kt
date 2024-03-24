@@ -42,6 +42,7 @@ enum class State(val value: Int) {
     ContentPlaying(2),
     ContentPause(3)
 }
+
 @Composable
 fun Novel1Episode1(player: MediaPlayer?, adsPlayer: MediaPlayer?, navController: NavHostController) {
     val categoryWidth = 80.dp
@@ -72,20 +73,20 @@ fun Novel1Episode1(player: MediaPlayer?, adsPlayer: MediaPlayer?, navController:
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                 shape = RectangleShape,
                 modifier = Modifier
-                    .offset(0.dp, y=120.dp)
+                    .offset(0.dp, y=110.dp)
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.subtitle),
                     contentDescription = null,
                     modifier = Modifier
                         .alpha(alphaRate)
+                        //.size(1430.dp, 1736.dp)
                 )
             }
         }
     }
     MakeE1PlayButton(player, adsPlayer, navController)
 }
-
 @Composable
 fun MakeE1PlayButton(player:MediaPlayer?, adsPlayer:MediaPlayer?, navController: NavHostController) {
     val (isPlaying, setIsPlaying) =
